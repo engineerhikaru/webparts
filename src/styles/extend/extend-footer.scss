@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+/* ===== 変数 ===== */
+// フッター親要素
+$footer-margin: 40px;
+$footer-bg: #DCE4EC;
+$footer-color: #2B536A;
+// コピーライト
+$footer-copyright-padding: 20px;
+$footer-copyright-bg: #2B536A;
+$footer-copyright-color: #DCE4EC;
+$footer-copyright-fsize: 16px;
+// フッターイメージ1
+$footer-hero1-bg: #444;
+$footer-hero1-bg-opacity: .5;
+$footer-hero1-h2Padding: 20px;
+$footer-hero1-h2Bg: transparent;
+$footer-hero1-h2Color: #fff;
+$footer-hero1-h2Fsize: 25px;
+$footer-hero1-pColor: #fff;
+$footer-hero1-pFsize: 16px;
+$footer-hero1-aMargin: 20px;
+$footer-hero1-aPadding: 10px;
+$footer-hero1-aBg: #2B536A;
+$footer-hero1-aColor: #fff;
+$footer-hero1-aFsize: 15px;
+$footer-hero1-aWidth: 200px;
+
+/* ===== 継承関数 ===== */
+// フッター親要素
+%footer{
+  margin-top: $footer-margin;
+  background: $footer-bg;
+  color: $footer-color;
+  @include max-screen($sp-size){
+    margin-top: $footer-margin / 2;
+  }
+}
+// コピーライト
+%footer-copyright{
+  padding: $footer-copyright-padding 0;
+  background: $footer-copyright-bg;
+  color: $footer-copyright-color;
+  text-align: center;
+  font-size: $footer-copyright-fsize;
+  @include max-screen($sp-size){
+    padding: $footer-copyright-padding / 1.5 0;
+    font-size: $footer-copyright-fsize / 1.3;
+  }
+}
+// フッターイメージ1
+%footer-hero1{
+  width: 100vw;
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $footer-hero1-bg;
+    opacity: $footer-hero1-bg-opacity;
+    z-index: 1;
+  }
+  > figure,
+  > figure img{
+    @extend %ab-hcenter;
+    height: 100%;
+    width: 100vw;
+    object-fit: cover;
+  }
+  > div{
+    padding: $footer-hero1-h2Padding $footer-hero1-h2Padding;
+    background: $footer-hero1-h2Bg;
+    z-index: 2;
+  }
+  h2{
+    color: $footer-hero1-h2Color;
+    font-size: $footer-hero1-h2Fsize;
+    @include max-screen($sp-size){
+      font-size: $footer-hero1-h2Fsize / 1.3;
+    }
+  }
+  p{
+    margin-top: $footer-hero1-aMargin / 2;
+    color: $footer-hero1-pColor;
+    font-size: $footer-hero1-pFsize;
+    @include max-screen($sp-size){
+      font-size: $footer-hero1-pFsize / 1.3;
+    }
+  }
+  a{
+    display: block;
+    margin-top: $footer-hero1-aMargin;
+    padding: $footer-hero1-aPadding $footer-hero1-aPadding / 2;
+    border-radius: 5px;
+    text-align: center;
+    background: $footer-hero1-aBg;
+    color: $footer-hero1-aColor;
+    width: $footer-hero1-aWidth;
+    font-size: $footer-hero1-aFsize;
+    @include max-screen($sp-size){
+      margin-top: $footer-hero1-aMargin / 1.5;
+      padding: $footer-hero1-aPadding / 1.5 $footer-hero1-aPadding / 2.5;
+      width: $footer-hero1-aWidth / 1.5;
+      font-size: $footer-hero1-aFsize / 1.5;
+    }
+  }
+}

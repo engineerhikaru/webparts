@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/* ===== 変数 ===== */
+$tab-gap: 10px;
+$tab-bg: #2B536A;
+$tab-color: #DCE4EC;
+
+/* ===== 継承関数 ===== */
+// タブ
+@mixin tab($tabLabelArea, $tabLabel, $tabContents, $tabContentsItem, $tabNumber){
+	> input[type="radio"],
+	#{$tabContents} > div{
+		display:none;
+	}
+	#{$tabLabelArea}{
+		display: flex;
+	  margin-bottom: 10px;
+	  width: 100%;
+	  text-align: center;
+		label{
+			padding: 10px;
+		  margin: 0;
+		  flex: 1;
+			background: $tab-bg;
+		  color: $tab-color;
+			// cursor: pointer;
+			cursor: none;
+			&:hover{
+				background: $tab-color;
+				color: $tab-bg;
+			}
+		}
+	}
+	@for $i from 1 through $tabNumber{
+	  #tab#{$i}{
+			&:checked ~ #{$tabLabelArea} #{$tabLabel}#{$i}{
+				background: $tab-color;
+				color: $tab-bg;
+			}
+			&:checked ~ #{$tabContents} #{$tabContentsItem}#{$i}{
+				display: block;
+				animation-duration: 1s;
+			  animation-name: tabFadein;
+			}
+		}
+	}
+}
+// タブコンテンツフェードイン
+@keyframes tabFadein{
+	0% {
+		opacity: 0;
+	  visibility: hidden;
+		transform: translateY(40px);
+	}
+  100% {
+		opacity: 1;
+	  visibility: visible;
+	  transform: translateY(0px) scale(1) rotate(0);
+	}
+}

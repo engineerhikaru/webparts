@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+// フッター親要素
+.footer{
+  @extend %footer;
+}
+// コピーライト
+.copyright{
+  @extend %footer-copyright;
+}
+// フッターイメージ
+.footer-img{
+  @extend %footer-hero1;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  > div{
+    @include max-width($max-width-top);
+    @extend %2column-equal;
+    align-items: center;
+    a{
+      @extend %hover-char-effect2;
+    }
+  }
+}

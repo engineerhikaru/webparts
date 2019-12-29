@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+/* ===== 変数 ===== */
+$pc-size: 1024px;
+$tablet-size: 768px;
+$sp-size: 480px;
+$max-width-top: 1024px;
+$max-width-page: 1200px;
+
+/* ===== 関数 ===== */
+// レスポンシブ(最大幅)
+@mixin max-screen($screen-size){
+  @media screen and (max-width: $screen-size){
+    @content;
+  }
+}
+// レスポンシブ(最小幅)
+@mixin min-screen($screen-size){
+  @media screen and (min-width: $screen-size){
+    @content;
+  }
+}
+// 最大幅
+@mixin max-width($max-width-px){
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: $max-width-px;
+}

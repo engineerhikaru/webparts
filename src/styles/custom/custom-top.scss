@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+// ヒーローイメージ
+.hero-img{
+  @extend %top-hero1;
+}
+// ヒーローイメージ2
+.hero-img2{
+  @extend %top-hero2;
+}
+// 見出し要素
+.top-index{
+  @extend %top-index1;
+}
+// 見出し要素2
+.top-index2{
+  @extend %top-index2;
+}
+// 見出し要素3
+.top-index3{
+  @extend %top-index3;
+}
+// セクション要素
+.top-section{
+  @extend %top-section1;
+  @include max-width($max-width-top);
+  @extend %layout-topPage;
+}
+// メイン親要素
+// .top-main{
+//   @extend %gridrepeat-2column;
+// }
+
+// ２グリッド
+.grid-2column{
+  @extend %gridrepeat-2column;
+}
+// 3グリッド
+.grid-3column{
+  @extend %gridrepeat-3column;
+}
+// 4グリッド
+.grid-4column{
+  @extend %gridrepeat-4column;
+}
+// 6グリッド
+.grid-6column{
+  @extend %gridrepeat-6column;
+  grid-gap: 0;
+}
+// 8グリッド
+.grid-8column{
+  @extend %gridrepeat-8column;
+  grid-gap: 0;
+}
+// ブログカード
+.post-item{
+  @extend %gridrepeat-blogcard1;
+  a{
+    @extend %hover-img-effect1;
+  }
+}
+// ブログカード2
+.post-item2{
+  @extend %gridrepeat-blogcard2;
+  a{
+    @extend %hover-img-effect1;
+  }
+}
+// 標準横並びアイテム1
+.standard-item{
+  @extend %gridrepeat-standard1;
+  a{
+    @extend %hover-char-effect2;
+  }
+}
+// 標準横並びアイテム2
+.standard-item2{
+  @extend %gridrepeat-standard2;
+}
+// 標準横並びアイテム3
+.standard-item3{
+  @extend %gridrepeat-standard3
+}

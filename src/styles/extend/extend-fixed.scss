@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+/* ===== 変数 ===== */
+// PC,SPトップバー【PC,SPボトムバーと同時使用可能】
+$fixed-top-bg: #DCE4EC;
+$fixed-top-color: #2B536A;
+$fixed-top-height: 100px;
+$fixed-top-zindex: 9999;
+// PC,SPボトムバー
+$fixed-bottom-bg: #DCE4EC;
+$fixed-bottom-color: #2B536A;
+$fixed-bottom-height: 100px;
+$fixed-bottom-zindex: 9999;
+// PC左,SPトップバー【PC右,SP非表示と同時使用可能】
+$fixed-left-bg: #DCE4EC;
+$fixed-left-color: #2B536A;
+$fixed-left-width: 70px;
+$fixed-left-height: 70px;
+$fixed-left-zindex: 9999;
+// PC右,SP非表示
+$fixed-right-bg: #DCE4EC;
+$fixed-right-color: #2B536A;
+$fixed-right-width: 70px;
+
+/* ===== 継承関数 ===== */
+// PC,SPトップバー(bodyタグのクラスに指定)
+%fixed-top-body{
+  padding-top: $fixed-top-height;
+  @include max-screen($tablet-size){
+    padding-top: $fixed-top-height / 1.5;
+  }
+}
+// PC,SPトップバー
+%fixed-top{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: $fixed-top-height;
+  width: 100vw;
+  background: $fixed-top-bg;
+  color: $fixed-top-color;
+  z-index: $fixed-top-zindex;
+  @include max-screen($tablet-size){
+    height: $fixed-top-height / 1.5;
+  }
+}
+// PC,SPボトムバー(bodyタグのクラスに指定)
+%fixed-bottom-body{
+  padding-bottom: $fixed-bottom-height;
+  @include max-screen($tablet-size){
+    padding-bottom: $fixed-bottom-height / 1.5;
+  }
+}
+// PC左,SPボトムバー
+%fixed-bottom{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: $fixed-bottom-height;
+  width: 100vw;
+  background: $fixed-bottom-bg;
+  color: $fixed-bottom-color;
+  z-index: $fixed-bottom-zindex;
+  @include max-screen($tablet-size){
+    height: $fixed-bottom-height / 1.5;
+  }
+}
+// PC左,SPトップバー(bodyタグのクラスに指定)
+%fixed-left-body{
+  padding-left: $fixed-left-width;
+  @include max-screen($tablet-size){
+    padding-left: 0;
+    padding-top: $fixed-left-height;
+  }
+}
+// PC左,SPトップバー
+%fixed-left{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: $fixed-left-width;
+  background: $fixed-left-bg;
+  color: $fixed-left-color;
+  z-index: $fixed-left-zindex;
+  @include max-screen($tablet-size){
+    height: $fixed-left-height;
+    width: 100vw;
+  }
+}
+// PC右,SP非表示(bodyタグのクラスに指定)
+%fixed-right-body{
+  padding-right: $fixed-right-width;
+  @include max-screen($tablet-size){
+    padding-right: 0;
+  }
+}
+// PC右,SP非表示
+%fixed-right{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: $fixed-left-width;
+  background: $fixed-right-bg;
+  color: $fixed-right-color;
+  @include max-screen($tablet-size){
+    display: none;
+  }
+}

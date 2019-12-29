@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+/* ===== 変数 ===== */
+// サイドバー下余白
+$sidebar-bottom-margin: 20px;
+// サイドバータイトル1
+$sidebar-title1-padding: 10px;
+$sidebar-title1-fsize: 20px;
+$sidebar-title1-bg: #DCE4EC;
+$sidebar-title1-color: #2B536A;
+// サイドバータイトル2
+$sidebar-title2-border: #fff;
+$sidebar-title2-padding: 10px;
+$sidebar-title2-fsize: 20px;
+$sidebar-title2-bg: #DCE4EC;
+$sidebar-title2-color: #2B536A;
+// サイドバータグ1
+$sidebar-tag1-border: rgba(0,0,0,.1);
+$sidebar-tag1-padding: 10px;
+$sidebar-tag1-fsize: 14px;
+$sidebar-tag1-bg: transparent;
+$sidebar-tag1-color: #444;
+// サイドバーリスト1
+$sidebar-list1-border: rgba(0,0,0,.1);
+$sidebar-list1-padding: 10px;
+$sidebar-list1-fsize: 14px;
+$sidebar-list1-bg: transparent;
+$sidebar-list1-color: #444;
+// サイドバーブログカード1
+$sidebar-post1-padding: 10px;
+$sidebar-post1-fsize: 14px;
+$sidebar-postAr1-bg: transparent;
+$sidebar-post1-bg: #eee;
+$sidebar-post1-color: #444;
+// サイドバーオーザー1
+$sidebar-author1-margin: 10px;
+$sidebar-author1-padding: 10px;
+$sidebar-author1-fsize: 14px;
+$sidebar-author1-bg: transparent;
+$sidebar-author1-color: #444;
+$sidebar-author1-h5Color: #888;
+$sidebar-author1-aBg: #2B536A;
+$sidebar-author1-aColor: #DCE4EC;
+$sidebar-author1-imgWidth: 120px;
+
+/* ===== 継承関数 ===== */
+// サイドバー下余白
+%sidebar-bottom-margin{
+  margin-bottom: $sidebar-bottom-margin;
+  @include max-screen($sp-size){
+    margin-bottom: $sidebar-bottom-margin / 2;
+  }
+}
+// サイドバータイトル1
+%sidebar-title1{
+  padding: $sidebar-title1-padding;
+  font-size: $sidebar-title1-fsize;
+  background: $sidebar-title1-bg;
+  color: $sidebar-title1-color;
+  @include max-screen($sp-size){
+    font-size: $sidebar-title1-fsize / 1.5;
+  }
+}
+// サイドバータイトル2
+%sidebar-title2{
+  padding: $sidebar-title2-padding $sidebar-title2-padding * 1.5;
+  font-size: $sidebar-title2-fsize;
+  background: $sidebar-title2-bg;
+  color: $sidebar-title2-color;
+  &::before{
+    content: '';
+    @extend %ab-midst;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    border: 1px solid $sidebar-title2-border
+  }
+  &::after{
+    content: '';
+    @extend %ab-center;
+    width: $sidebar-title2-padding;
+    height: $sidebar-title2-padding / 2;
+    background: $sidebar-title2-border;
+  }
+  @include max-screen($sp-size){
+    font-size: $sidebar-title2-fsize / 1.5;
+  }
+}
+// サイドバータグ1
+%sidebar-tag1{
+  padding: $sidebar-tag1-padding;
+  background: $sidebar-tag1-bg;
+  li{
+    display: inline-block;
+    font-size: $sidebar-tag1-fsize;
+    list-style: none;
+  }
+  a{
+    display: block;
+    margin-bottom: 5px;
+    border: 1px solid $sidebar-tag1-border;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: $sidebar-tag1-color;
+  }
+  @include max-screen($sp-size){
+    font-size: $sidebar-tag1-fsize / 1.5;
+  }
+}
+// サイドバーリスト1
+%sidebar-list1{
+  padding: $sidebar-list1-padding;
+  background: $sidebar-list1-bg;
+  li{
+    display: block;
+    border-bottom: dotted 1px $sidebar-list1-border;
+    padding: $sidebar-list1-padding 0;
+    &:first-child{
+      border-top: dotted 1px $sidebar-list1-border;
+    }
+  }
+  a{
+    font-size: $sidebar-list1-fsize;
+    color: $sidebar-list1-color;
+  }
+  @include max-screen($sp-size){
+    font-size: $sidebar-list1-fsize / 1.5;
+  }
+}
+// サイドバーブログカード1
+%sidebar-post1{
+  padding: $sidebar-post1-padding;
+  background: $sidebar-postAr1-bg;
+  li:not(:last-child){
+    margin-bottom: 10px;
+  }
+  a{
+    display: flex;
+    align-items: center;
+    background: $sidebar-post1-bg;
+  }
+  figure{
+    width: 25%;
+  }
+  span{
+    padding: 10px 0;
+    padding-left: 10px;
+    width: 75%;
+    color: $sidebar-post1-color;
+    font-size: $sidebar-post1-fsize;
+    @include max-screen($sp-size){
+      font-size: $sidebar-post1-fsize / 1.5;
+    }
+  }
+}
+// サイドバーオーザー1
+%sidebar-author1{
+  padding: $sidebar-author1-padding;
+  background: $sidebar-author1-bg;
+  figure{
+    margin: auto;
+    width: $sidebar-author1-imgWidth;
+    height: $sidebar-author1-imgWidth;
+    overflow: hidden;
+  }
+  img{
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  h4{
+    margin-top: $sidebar-author1-margin;
+    text-align: center;
+    color: $sidebar-author1-color;
+    font-size: $sidebar-author1-fsize;
+    @include max-screen($sp-size){
+      font-size: $sidebar-post1-fsize / 1.5;
+    }
+  }
+  h5{
+    text-align: center;
+    color: $sidebar-author1-h5Color;
+    font-size: $sidebar-author1-fsize / 1.3;
+    @include max-screen($sp-size){
+      font-size: $sidebar-post1-fsize / 1.8;
+    }
+  }
+  p{
+    margin-top: $sidebar-author1-margin * 2;
+    color: $sidebar-author1-color;
+    font-size: $sidebar-author1-fsize;
+    @include max-screen($sp-size){
+      font-size: $sidebar-post1-fsize / 1.5;
+    }
+  }
+  a{
+    display: block;
+    margin: auto;
+    margin-top: $sidebar-author1-margin * 2;
+    padding: 10px 0;
+    border-radius: 5px;
+    width: $sidebar-author1-imgWidth;
+    text-align: center;
+    background: $sidebar-author1-aBg;
+    color: $sidebar-author1-aColor;
+    font-size: $sidebar-post1-fsize / 1.5;
+    @include max-screen($sp-size){
+      font-size: $sidebar-post1-fsize / 1.8;
+    }
+  }
+}

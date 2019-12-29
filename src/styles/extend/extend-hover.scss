@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* ===== 変数 ===== */
+$hover-transition-speed: all .3s ease-in-out;
+$hover-bg: #DCE4EC;
+$hover-color: #2B536A;
+$hover-oppositebg: #2B536A;
+$hover-oppositecolor: #DCE4EC;
+$hover-border: #fff;
+
+/* ===== 継承関数 ===== */
+// 上に動く【併用可】
+%hover-up{
+  transition: $hover-transition-speed;
+  &:hover{
+    transform: translateY(-3px);
+  }
+}
+// 透過【併用可】
+%hover-opacity{
+  transition: $hover-transition-speed;
+  &:hover{
+    opacity: .5;
+  }
+}
+// 文字エフェクト1(文字色)
+%hover-char-effect1{
+  transition: $hover-transition-speed;
+  &:hover{
+    color: $hover-color;
+  }
+}
+// 文字エフェクト2(文字色&背景色)
+%hover-char-effect2{
+  transition: $hover-transition-speed;
+  &:hover{
+    background: $hover-bg;
+    color: $hover-color;
+  }
+}
+// 文字エフェクト3(ボーダー下)
+%hover-char-effect3{
+  &::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: $hover-border;
+    transition: $hover-transition-speed;
+  }
+  &:hover::after{
+    width: 100%;
+  }
+}
+// 画像エフェクト1(浮く)
+%hover-img-effect1{
+  transition: $hover-transition-speed;
+  &:hover{
+    box-shadow: 0 10px 20px -5px rgba(0,0,0,.2);
+    transform: translateY(-2px);
+  }
+}
+// 画像エフェクト2(ズーム)
+%hover-img-effect2{
+  transition: $hover-transition-speed;
+  overflow: hidden;
+  &:hover{
+    img{
+      transform: scale(1.2) rotate(3deg);
+    }
+  }
+}

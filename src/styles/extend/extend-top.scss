@@ -1,0 +1,295 @@
+@charset "UTF-8";
+
+/* ===== 変数 ===== */
+// ヒーローイメージ1
+$top-hero1-height: 50vh;
+$top-hero1-bg: #444;
+$top-hero1-bg-opacity: .5;
+$top-hero1-h2Padding: 20px;
+$top-hero1-h2Bg: transparent;
+$top-hero1-h2Color: #fff;
+$top-hero1-h2Fsize: 25px;
+$top-hero1-h2Width: 700px;
+$top-hero1-aMargin: 20px;
+$top-hero1-aPadding: 10px;
+$top-hero1-aBg: #2B536A;
+$top-hero1-aColor: #fff;
+$top-hero1-aFsize: 15px;
+$top-hero1-aWidth: 250px;
+// ヒーローイメージ2
+$top-hero2-height: 50vh;
+$top-hero2-bg: #444;
+$top-hero2-bg-opacity: .5;
+$top-hero2-h2Padding: 20px;
+$top-hero2-h2Bg: transparent;
+$top-hero2-h2Color: #fff;
+$top-hero2-h2Fsize: 25px;
+$top-hero2-h2Width: 700px;
+$top-hero2-aMargin: 20px;
+$top-hero2-aPadding: 10px;
+$top-hero2-aBg: #2B536A;
+$top-hero2-aColor: #fff;
+$top-hero2-aFsize: 15px;
+$top-hero2-aWidth: 250px;
+// 見出し1
+$top-index1-borderWidth: 3px;
+$top-index1-borderPosition: 30px;
+$top-index1-fsize: 30px;
+$top-index1-bg: transparent;
+$top-index1-color: #2B536A;
+$top-index1-bfHeight: 20px;
+$top-index1-rotate: 30deg;
+// 見出し2
+$top-index2-borderWidth: 45px;
+$top-index2-borderHeight: 3px;
+$top-index2-fsize: 30px;
+$top-index2-bg: transparent;
+$top-index2-color: #2B536A;
+// 見出し3
+$top-index3-padding: 10px;
+$top-index3-borderWidth: 100px;
+$top-index3-borderHeight: 3px;
+$top-index3-fsize: 30px;
+$top-index3-bg: transparent;
+$top-index3-color: #2B536A;
+// セクション1
+$top-section1-margin: 20px;
+$top-section1-padding: 20px;
+$top-section1-bg: transparent;
+$top-section1-color: #2B536A;
+$top-section1-h2Fsize: 20px;
+
+/* ===== 継承関数 ===== */
+// ヒーローイメージ1
+%top-hero1{
+  width: 100vw;
+  height: $top-hero1-height;
+  @include max-screen($tablet-size){
+    height: $top-hero1-height * 1.5;
+  }
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $top-hero1-bg;
+    opacity: $top-hero1-bg-opacity;
+    z-index: 1;
+  }
+  figure,
+  img{
+    height: 100%;
+    object-fit: cover;
+  }
+  > div{
+    @extend %ab-midst;
+    padding: $top-hero1-h2Padding $top-hero1-h2Padding / 2;
+    background: $top-hero1-h2Bg;
+    width: $top-hero1-h2Width;
+    text-align: center;
+    z-index: 2;
+    @include max-screen($tablet-size){
+      top: inherit;
+      bottom: 0;
+      transform: translate(-50%, 0);
+      padding: $top-hero1-h2Padding / 1.5 $top-hero1-h2Padding / 2.5;
+      width: 100%;
+    }
+  }
+  h2{
+    color: $top-hero1-h2Color;
+    font-size: $top-hero1-h2Fsize;
+    @include max-screen($sp-size){
+      font-size: $top-hero1-h2Fsize / 1.3;
+    }
+  }
+  a{
+    display: block;
+    margin: auto;
+    margin-top: $top-hero1-aMargin;
+    padding: $top-hero1-aPadding $top-hero1-aPadding / 2;
+    border-radius: 5px;
+    text-align: center;
+    background: $top-hero1-aBg;
+    color: $top-hero1-aColor;
+    width: $top-hero1-aWidth;
+    font-size: $top-hero1-aFsize;
+    @include max-screen($sp-size){
+      margin-top: $top-hero1-aMargin / 1.5;
+      padding: $top-hero1-aPadding / 1.5 $top-hero1-aPadding / 2.5;
+      width: $top-hero1-aWidth / 1.5;
+      font-size: $top-hero1-aFsize / 1.5;
+    }
+  }
+}
+// ヒーローイメージ2
+%top-hero2{
+  width: 100vw;
+  height: $top-hero2-height;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  @include max-screen($tablet-size){
+    height: $top-hero2-height * 1.5;
+  }
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $top-hero2-bg;
+    opacity: $top-hero2-bg-opacity;
+    z-index: 1;
+  }
+  > div{
+    @extend %ab-midst;
+    padding: $top-hero2-h2Padding $top-hero2-h2Padding / 2;
+    background: $top-hero2-h2Bg;
+    width: $top-hero2-h2Width;
+    text-align: center;
+    z-index: 2;
+    @include max-screen($tablet-size){
+      top: inherit;
+      bottom: 0;
+      transform: translate(-50%, 0);
+      padding: $top-hero2-h2Padding / 1.5 $top-hero2-h2Padding / 2.5;
+      width: 100%;
+    }
+  }
+  h2{
+    color: $top-hero2-h2Color;
+    font-size: $top-hero2-h2Fsize;
+    @include max-screen($sp-size){
+      font-size: $top-hero2-h2Fsize / 1.3;
+    }
+  }
+  a{
+    display: block;
+    margin: auto;
+    margin-top: $top-hero2-aMargin;
+    padding: $top-hero2-aPadding $top-hero2-aPadding / 2;
+    border-radius: 5px;
+    text-align: center;
+    background: $top-hero2-aBg;
+    color: $top-hero2-aColor;
+    width: $top-hero2-aWidth;
+    font-size: $top-hero2-aFsize;
+    @include max-screen($sp-size){
+      margin-top: $top-hero2-aMargin / 1.5;
+      padding: $top-hero2-aPadding / 1.5 $top-hero2-aPadding / 2.5;
+      width: $top-hero2-aWidth / 1.5;
+      font-size: $top-hero2-aFsize / 1.5;
+    }
+  }
+}
+// 見出し1
+%top-index1{
+  font-weight: bold;
+  text-align: center;
+  background: $top-index1-bg;
+  color: $top-index1-color;
+  font-size: $top-index1-fsize;
+  @include max-screen($sp-size){
+    font-size: $top-index1-fsize / 1.6;
+  }
+  h2{
+    display: inline-block;
+    position: relative;
+    margin: auto;
+    &::before,
+    &::after{
+      content: '';
+      position: absolute;
+      top: $top-index1-bfHeight / (-2);
+      left: $top-index1-borderPosition * (-1);
+      height: calc(100% + #{$top-index1-bfHeight});
+      width: $top-index1-borderWidth;
+      background: $top-index1-color;
+      transform: rotate($top-index1-rotate * (-1));
+    }
+    &::after{
+      left: calc(100% + #{$top-index1-borderPosition});
+      transform: rotate($top-index1-rotate);
+    }
+  }
+}
+// 見出し2
+%top-index2{
+  font-weight: bold;
+  text-align: center;
+  background: $top-index2-bg;
+  color: $top-index2-color;
+  font-size: $top-index2-fsize;
+  @include max-screen($sp-size){
+    font-size: $top-index2-fsize / 1.6;
+  }
+  h2{
+    display: inline-block;
+    position: relative;
+    margin: auto;
+    &::before,
+    &::after{
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      width: $top-index2-borderWidth;
+      height: $top-index2-borderHeight;
+      background: $top-index2-color;
+    }
+    &:before {
+      left: calc(100% + 10px);
+    }
+    &::after{
+      right: calc(100% + 10px);
+    }
+  }
+}
+// 見出し3
+%top-index3{
+  font-weight: bold;
+  text-align: center;
+  background: $top-index3-bg;
+  color: $top-index3-color;
+  font-size: $top-index3-fsize;
+  @include max-screen($sp-size){
+    font-size: $top-index3-fsize / 1.6;
+  }
+  h2{
+    display: inline-block;
+    position: relative;
+    margin: auto;
+    padding-bottom: $top-index3-padding;
+    &::after{
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: $top-index3-borderWidth;
+      height: $top-index3-borderHeight;
+      background: $top-index3-color;
+    }
+  }
+}
+%top-section1{
+  padding: $top-section1-padding;
+  background: $top-section1-bg;
+  color: $top-section1-color;
+  text-align: center;
+  h2{
+    line-height: 2;
+    font-size: $top-section1-h2Fsize;
+    @include max-screen($sp-size){
+      font-size: $top-section1-h2Fsize / 1.5;
+    }
+  }
+  img{
+    margin-top: $top-section1-margin;
+  }
+}

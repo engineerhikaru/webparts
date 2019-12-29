@@ -1,0 +1,40 @@
+@charset "UTF-8";
+// スクロールインフェードイン(下から)
+.fadeinUp{
+  @include scrollin(translateY(40px), 1s);
+}
+
+// スクロールインフェードイン(右から)
+// .fadeinRight{
+//   @include scrollin(translateX(40px), 1s);
+// }
+
+// スクロールインフェードイン(左から)
+// .fadeinLeft{
+//   @include scrollin(translateX(-40px), 1s);
+// }
+
+// スクロールフリップイン(X軸)
+// .flipinX{
+//   @include scrollin(scale(-1, 1), 1s);
+// }
+
+// スクロールフリップイン(Y軸)
+// .flipinY{
+//   @include scrollin(scale(1, -1), 1s);
+// }
+
+// スクロールズームイン
+// .zoomin{
+//   @include scrollin(scale(1.3), 1s);
+// }
+
+// スクロールロールイン
+// .rotatein{
+//   @include scrollin(rotate(30deg), 1s);
+// }
+
+// スクロールインアクション(JSが適用された時)
+.scrollin-action{
+  @include scrollinAction(translateY(0px) scale(1) rotate(0));
+}

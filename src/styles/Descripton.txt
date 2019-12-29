@@ -1,0 +1,30 @@
+# CSSコード目次
+
+## ディレクトリ,ファイル関係
+bundle バンドル用SCSS
+
+- base/ress レスSCSS
+- /base/variable 変数用SCSS
+- /base/mixin 関数用SCSS
+- /base/basic オリジナルレスSCSS
+
+- /extend/extend 継承元用SCSS
+- /extend/extend-layout レイアウト継承元SCSS
+- /extend/extend-header ヘッダー継承元SCSS
+- /extend/extend-footer フッター継承元SCSS
+- /extend/extend-top トップ継承元SCSS
+- /extend/extend-page ページ継承元SCSS
+- /extend/extend-search 検索継承元SCSS
+- /extend/extend-hover ホバー継承元SCSS
+- /extend/extend-repeatgrid グリッドリピート継承元SCSS(ブログカードなど)
+
+
+- /custom/layout レイアウト用SCSS
+- /custom/header ヘッダー用SCSS
+- /custom/footer フッター用SCSS
+- /custom/sidebar サイドバー用SCSS
+- /custom/top トップ用SCSS
+- /custom/page ページ用SCSS
+- /custom/search 検索用SCSS
+
+##

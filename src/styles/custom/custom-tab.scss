@@ -1,0 +1,7 @@
+@charset "UTF-8";
+// タブ
+.tab-container{
+  @include tab('.tab-label', '#tab-label', '.tab-contents', '#tab-item', 3);
+  @include max-width($max-width-top);
+  @extend %layout-topPage;
+}

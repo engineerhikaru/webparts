@@ -1,0 +1,16 @@
+@charset "UTF-8";
+/* ===== 変数 ===== */
+
+/* ===== クラス ===== */
+// トップページレイアウト
+.layout-top{
+  @extend %1column;
+  @include max-width($max-width-top);
+  @extend %layout-topPage;
+}
+// 下層ページレイアウト
+.layout-page{
+  @extend %2column-right;
+  @include max-width($max-width-page);
+  @extend %layout-underPage;
+}

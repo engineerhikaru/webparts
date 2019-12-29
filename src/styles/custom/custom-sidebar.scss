@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+// サイドバー親要素
+.sidebar{
+}
+// サイドバータイトル
+.sidebar-title{
+  // @extend %sidebar-title1;
+  @extend %sidebar-title2;
+}
+// サイドバータグ
+.sidebar-tag{
+  @extend %sidebar-tag1;
+  @extend %sidebar-bottom-margin;
+  a{
+    @extend %hover-char-effect2;
+  }
+}
+// サイドバーリスト
+.sidebar-list{
+  @extend %sidebar-list1;
+  @extend %sidebar-bottom-margin;
+  a{
+    @extend %hover-char-effect1;
+  }
+}
+// サイドバーブログカード
+.sidebar-post{
+  @extend %sidebar-post1;
+  @extend %sidebar-bottom-margin;
+  a{
+    @extend %hover-img-effect1;
+  }
+}
+// サイドバーオーザー
+.sidebar-author{
+  @extend %sidebar-author1;
+  @extend %sidebar-bottom-margin;
+  a{
+    @extend %hover-img-effect1;
+  }
+}

@@ -1,0 +1,207 @@
+@charset "UTF-8";
+
+/* ===== 変数 ===== */
+$header-title-fsize: 25px;
+$header-bg: #DCE4EC;
+$header-color: #2B536A;
+$header-height: 70px;
+$header-h1Fsize: 25px;
+$header-navFsize: 16px;
+$header-nav-margin: 10px;
+$header-drower-speed: all .3s ease-in-out;
+$header-drower-bg: #DCE4EC;
+$header-burger-margin: 8px;
+$header-burger-color: #2B536A;
+$header-burger-width: 26px;
+
+/* ===== 継承関数 ===== */
+/* 親要素 */
+// 親要素継承
+%header-layout-container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+// ヘッダー基礎要素(.header)【必須】
+%header-base{
+  background: $header-bg;
+  color: $header-color;
+  height: $header-height;
+}
+// タイトル × ナビゲーション横並び
+%header-layout-between{
+  @extend %header-layout-container;
+  justify-content: space-between;
+  a{
+    display: block;
+    line-height: $header-height;
+    color: $header-color;
+    text-decoration: none;
+  }
+  h1,h2{
+    padding-left: $body-padding; // extend.scssの関数
+    font-size: $header-h1Fsize;
+    @include max-screen($sp-size){
+      font-size: $header-h1Fsize / 1.2;
+    }
+  }
+  ul{
+    padding-right: $body-padding; // extend.scssの関数
+    font-size: $header-navFsize;
+    @include max-screen($sp-size){
+      font-size: $header-navFsize / 1.2;
+    }
+  }
+  li{
+    display: inline-block;
+    &:not(:last-child){
+      margin-right: $header-nav-margin;
+    }
+  }
+}
+// タイトル中央 × ナビゲーション中央
+%header-layout-center{
+  @extend %header-layout-container;
+  flex-wrap: wrap;
+}
+// ナビゲーションドロワー
+%header-nav-drower{
+  @include min-screen($tablet-size + 1){
+    input[type="checkbox"],
+    label{
+      display: none;
+    }
+  }
+  @include max-screen($tablet-size){
+    input[type="checkbox"]{
+      display: none;
+      &:not(:checked) ~ nav{
+        overflow: hidden;
+        width: 100%;
+        height: 0;
+      }
+      &:checked ~ nav{
+        margin-top: -1 * $header-height;
+        padding-top: $header-height;
+        width: 100%;
+        height: 100vh;
+        z-index: 9998;
+        background: $header-drower-bg;
+      }
+    }
+    label{
+      width: $header-height;
+      height: $header-height;
+      cursor: pointer;
+      z-index: 9999;
+      span{
+        &,
+        &::before,
+        &::after{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    nav{
+      li{
+        width: 100%;
+        text-align: center;
+      }
+      a{
+        padding: 0 20px;
+      }
+    }
+  }
+}
+// ハンバーガーコンポーネント1
+%header-burger1{
+  @include max-screen($tablet-size){
+    span{
+      &,
+      &::before,
+      &::after{
+        display: block;
+        width: $header-burger-width;
+        height: 2px;
+        background: $header-burger-color;
+        transition: $header-drower-speed;
+      }
+      &::before,
+      &::after{
+        content: '';
+        position: absolute;
+      }
+      &::before{ margin-top: -1 * $header-burger-margin; }
+      &::after{ margin-top: $header-burger-margin; }
+    }
+  }
+}
+// ハンバーガーコンポーネント2
+%header-burger2{
+  @include max-screen($tablet-size){
+    span{
+      width: $header-burger-width;
+      height: 2px;
+      &,
+      &::before,
+      &::after{
+        display: block;
+        background: $header-burger-color;
+        transition: $header-drower-speed;
+      }
+      &::before,
+      &::after{
+        content: '';
+        position: absolute;
+        width: $header-burger-width / 1.5;
+        height: 2px;
+      }
+      &::before{ margin-top: -1 * $header-burger-margin; margin-left: -6px; }
+      &::after{ margin-top: $header-burger-margin; margin-left: 6px; }
+    }
+  }
+}
+// ハンバーガーコンポーネント1クリック後1
+%header-burger1-action1{
+  @include max-screen($tablet-size){
+    &:checked ~ label span{
+      background: transparent;
+    }
+    &:checked ~ label span::before,
+    &:checked ~ label span::after{
+      margin-top: 0;
+      margin-left: -1 * $header-burger-width;
+    }
+    &:checked ~ label span::before{
+      transform: rotate(45deg) translate(0, -50%);
+    }
+    &:checked ~ label span::after{
+      transform: rotate(-45deg) translate(0, -50%);
+    }
+  }
+}
+// ハンバーガーコンポーネント2クリック後1
+%header-burger2-action1{
+  @include max-screen($tablet-size){
+    &:checked ~ label span{
+      background: transparent;
+      transform: translateX(-1 * $header-burger-width);
+    }
+    &:checked ~ label span::before,
+    &:checked ~ label span::after{
+      left: 50%;
+      margin-top: 0;
+      margin-left: 0;
+      width: $header-burger-width;
+    }
+    &:checked ~ label span::before{
+      transform: rotate(45deg) translate(0, -50%);
+    }
+    &:checked ~ label span::after{
+      transform: rotate(-45deg) translate(0, -50%);
+    }
+  }
+}

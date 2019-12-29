@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+/* ===== 変数 ===== */
+$body-font: "Lato", "Hiragino Maru Gothic Pro", "Meiryo UI", Meiryo, "MS PGothic", sans-serif;
+$body-bg: #fff;
+$body-color: #444;
+$body-lspace: 3px;
+$body-padding: 10px;
+// マウスカーソル
+$cursor-width: 8px;
+$cursor-bg: rgba(43,83,106,0.8);
+$cursor-hoverWidth: 32px;
+$cursor-hoverBg: rgba(43,83,106,0.5);
+
+/* ===== 継承関数 ===== */
+// 全体適用
+%body{
+  letter-spacing: $body-lspace;
+  font-family: $body-font;
+  background: $body-bg;
+  color: $body-color;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+// 横並び
+%flexbox{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+// スクロール要素
+%scroll-x{
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
+}
+// 中央寄せ(縦中央)
+%ab-center{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+// 中央寄せ(横中央)
+%ab-hcenter{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+// 中央寄せ(縦横中央)
+%ab-midst{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+// カーソル
+%cursor{
+  pointer-events: none;
+  position: fixed;
+  top: -1 * $cursor-width / 2;
+  left: -1 * $cursor-width / 2;
+  width: $cursor-width;
+  height: $cursor-width;
+  background: $cursor-bg;
+  border-radius: 50%;
+  z-index: 9999;
+  transition: width .3s, height .3s, top .3s, left .3s;
+  &.cursor-hover{
+    top: -1 * $cursor-hoverWidth / 2;
+    left: -1 * $cursor-hoverWidth / 2;
+    width: $cursor-hoverWidth;
+    height: $cursor-hoverWidth;
+    background: $cursor-hoverBg;
+  }
+}

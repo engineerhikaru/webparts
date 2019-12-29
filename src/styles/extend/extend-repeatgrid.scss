@@ -1,0 +1,301 @@
+@charset "UTF-8";
+
+/* ===== 変数 ===== */
+// グリッドスペース
+$gridrepeat-gap: 10px;
+// ブログカード1
+$gridrepeat-blogcard1-bg: #eee;
+$gridrepeat-blogcard1-color: #0A192F;
+$gridrepeat-blogcard1-h3Fsize: 16px;
+// ブログカード2
+$gridrepeat-blogcard2-gap: 15px;
+$gridrepeat-blogcard2-padding: 20px;
+$gridrepeat-blogcard2-bg: transparent;
+$gridrepeat-blogcard2-color: #0A192F;
+$gridrepeat-blogcard2-fsize: 20px;
+$gridrepeat-blogcard2-aBg: #2B536A;
+$gridrepeat-blogcard2-aColor: #DCE4EC;
+// 標準横並びアイテム1
+$gridrepeat-standard1-margin: 10px;
+$gridrepeat-standard1-padding: 20px;
+$gridrepeat-standard1-bg: transparent;
+$gridrepeat-standard1-fsize: 20px;
+$gridrepeat-standard1-color: #444;
+$gridrepeat-standard1-h4Color: #888;
+$gridrepeat-standard1-aBg: #2B536A;
+$gridrepeat-standard1-aColor: #DCE4EC;
+$gridrepeat-standard1-imgWidth: 150px;
+// 標準横並びアイテム2
+$gridrepeat-standard2-gap: 15px;
+$gridrepeat-standard2-padding: 20px;
+$gridrepeat-standard2-bg: transparent;
+$gridrepeat-standard2-fsize: 20px;
+$gridrepeat-standard2-color: #444;
+// 標準横並びアイテム3
+$gridrepeat-standard3-gap: 10px;
+$gridrepeat-standard3-bg: #444;
+$gridrepeat-standard3-bg-opacity: .5;
+$gridrepeat-standard3-fsize: 20px;
+$gridrepeat-standard3-color: #fff;
+
+
+/* ===== 継承関数 ===== */
+/* 親要素 */
+// 親要素継承
+%gridrepeat-container{
+  display: grid;
+  grid-gap: $gridrepeat-gap;
+}
+// 2列
+%gridrepeat-2column{
+  @extend %gridrepeat-container;
+  grid-template-columns: repeat(2, 1fr);
+  @include max-screen($tablet-size){
+    grid-template-columns: 1fr;
+  }
+}
+// 3列
+%gridrepeat-3column{
+  @extend %gridrepeat-container;
+  grid-template-columns: repeat(3, 1fr);
+  @include max-screen($tablet-size){
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include max-screen($sp-size){
+    grid-template-columns: 1fr;
+  }
+}
+// 4列
+%gridrepeat-4column{
+  @extend %gridrepeat-container;
+  grid-template-columns: repeat(4, 1fr);
+  @include max-screen($sp-size){
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+// 6列
+%gridrepeat-6column{
+  @extend %gridrepeat-container;
+  grid-template-columns: repeat(6, 1fr);
+  @include max-screen($tablet-size){
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include max-screen($sp-size){
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+// 8列
+%gridrepeat-8column{
+  @extend %gridrepeat-container;
+  grid-template-columns: repeat(8, 1fr);
+  @include max-screen($tablet-size){
+    grid-template-columns: repeat(6, 1fr);
+  }
+  @include max-screen($sp-size){
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// ブログカード1
+%gridrepeat-blogcard1{
+  background: $gridrepeat-blogcard1-bg;
+  h3{
+    padding: 10px;
+    color: $gridrepeat-blogcard1-color;
+    font-size: $gridrepeat-blogcard1-h3Fsize;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-blogcard1-h3Fsize / 1.5;
+    }
+  }
+}
+// ブログカード2
+%gridrepeat-blogcard2{
+  display: flex;
+  padding: $gridrepeat-blogcard2-padding;
+  background: $gridrepeat-blogcard2-bg;
+  @include max-screen($sp-size){
+    padding: $gridrepeat-blogcard2-padding / 2;
+  }
+  figure{
+    padding-right: $gridrepeat-blogcard2-gap / 2;
+    flex: 3;
+    overflow: hidden;
+  }
+  img{
+    object-fit: cover;
+  }
+  div{
+    padding-left: $gridrepeat-blogcard2-gap / 2;
+    flex: 7;
+  }
+  h3{
+    color: $gridrepeat-blogcard2-color;
+    line-height: 1;
+    font-size: $gridrepeat-blogcard2-fsize;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-blogcard2-fsize / 1.3;
+    }
+  }
+  p{
+    padding-top: $gridrepeat-blogcard2-gap;
+    color: $gridrepeat-blogcard2-color;
+    font-size: $gridrepeat-blogcard2-fsize / 1.3;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-blogcard2-fsize / 1.6;
+    }
+  }
+  a{
+    display: block;
+    margin-left: auto;
+    margin-top: $gridrepeat-blogcard2-gap;
+    padding: 10px 0;
+    border-radius: 5px;
+    width: 120px;
+    text-align: center;
+    background: $gridrepeat-blogcard2-aBg;
+    color: $gridrepeat-blogcard2-aColor;
+    font-size: $gridrepeat-blogcard2-fsize / 1.5;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-blogcard2-fsize / 1.8;
+    }
+  }
+}
+
+// 標準横並びアイテム1
+%gridrepeat-standard1{
+  padding: $gridrepeat-standard1-padding;
+  background: $gridrepeat-standard1-bg;
+  figure{
+    margin: auto;
+    width: $gridrepeat-standard1-imgWidth;
+    height: $gridrepeat-standard1-imgWidth;
+    overflow: hidden;
+  }
+  img{
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  h3{
+    margin-top: $gridrepeat-standard1-margin;
+    text-align: center;
+    color: $gridrepeat-standard1-color;
+    font-size: $gridrepeat-standard1-fsize;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-standard1-fsize / 1.3;
+    }
+  }
+  h4{
+    text-align: center;
+    color: $gridrepeat-standard1-h4Color;
+    font-size: $gridrepeat-standard1-fsize / 1.5;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-standard1-fsize / 1.8;
+    }
+  }
+  p{
+    margin-top: $gridrepeat-standard1-margin * 2;
+    color: $gridrepeat-standard1-color;
+    font-size: $gridrepeat-standard1-fsize / 1.3;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-standard1-fsize / 1.6;
+    }
+  }
+  a{
+    display: block;
+    margin: auto;
+    margin-top: $gridrepeat-standard1-margin * 2;
+    padding: 10px 0;
+    border-radius: 5px;
+    width: $gridrepeat-standard1-imgWidth;
+    text-align: center;
+    background: $gridrepeat-standard1-aBg;
+    color: $gridrepeat-standard1-aColor;
+    font-size: $gridrepeat-standard1-fsize / 1.5;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-standard1-fsize / 1.8;
+    }
+  }
+}
+// 標準横並びアイテム2
+%gridrepeat-standard2{
+  display: flex;
+  padding: $gridrepeat-standard2-padding;
+  background: $gridrepeat-standard2-bg;
+  @include max-screen($sp-size){
+    padding: $gridrepeat-standard2-padding / 2;
+  }
+  figure{
+    padding-right: $gridrepeat-standard2-gap / 2;
+    flex: 2;
+    overflow: hidden;
+  }
+  img{
+    object-fit: cover;
+  }
+  div{
+    padding-left: $gridrepeat-standard2-gap / 2;
+    flex: 8;
+  }
+  h3{
+    color: $gridrepeat-standard2-color;
+    line-height: 1;
+    font-size: $gridrepeat-standard2-fsize;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-standard2-fsize / 1.3;
+    }
+  }
+  p{
+    padding-top: $gridrepeat-standard2-gap;
+    color: $gridrepeat-standard2-color;
+    font-size: $gridrepeat-standard2-fsize / 1.3;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-standard2-fsize / 1.6;
+    }
+  }
+}
+// 標準横並びアイテム3
+%gridrepeat-standard3{
+  width: 100%;
+  padding-top: 100%;
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $gridrepeat-standard3-bg;
+    opacity: $gridrepeat-standard3-bg-opacity;
+    z-index: 1;
+  }
+  figure{
+    @extend %ab-center;
+    width: 100%;
+    overflow: hidden;
+  }
+  img{
+    object-fit: cover;
+  }
+  div{
+    @extend %ab-center;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+  }
+  h3{
+    color: $gridrepeat-standard3-color;
+    line-height: 1;
+    font-size: $gridrepeat-standard3-fsize;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-standard3-fsize / 1.3;
+    }
+  }
+  p{
+    padding-top: $gridrepeat-standard3-gap;
+    color: $gridrepeat-standard3-color;
+    font-size: $gridrepeat-standard3-fsize / 1.3;
+    @include max-screen($sp-size){
+      font-size: $gridrepeat-standard3-fsize / 1.6;
+    }
+  }
+}

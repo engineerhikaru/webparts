@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+/* ===== 変数 ===== */
+$layout-gap: 10px;
+$layout-leftWidth: 300px;
+$layout-rightWidth: 300px;
+$layout-top-topMargin: 50px;
+$layout-page-topMargin: 50px;
+
+/* ===== 継承関数 ===== */
+/* 親要素 */
+// レイアウト親要素
+%layout-container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+// 1カラム
+%1column{
+  @extend %layout-container;
+  > div{
+    flex: 100%;
+    &:not(:first-child){
+      padding-top: $layout-gap;
+    }
+  }
+}
+// 2カラム(2糖分)
+%2column-equal{
+  @extend %layout-container;
+  @include min-screen($tablet-size + 1){
+    > div{
+      flex: 1;
+      &:nth-child(1){
+        padding-right: $layout-gap / 2;
+      }
+      &:nth-child(2){
+        padding-left: $layout-gap / 2;
+      }
+    }
+  }
+  @include max-screen($tablet-size){
+    > div{
+      flex: 100%;
+      &:nth-child(2){
+        padding-top: $layout-gap;
+      }
+    }
+  }
+}
+// 2カラム(メイン&右サイドバー)
+%2column-right{
+  @extend %layout-container;
+  @include min-screen($tablet-size + 1){
+    > div{
+      &:nth-child(1){
+        padding-right: $layout-gap / 2;
+        flex: 1;
+      }
+      &:nth-child(2){
+        padding-left: $layout-gap / 2;
+        flex: 0 0 $layout-rightWidth;
+      }
+    }
+  }
+  @include max-screen($tablet-size){
+    > div{
+      flex: 100%;
+      &:nth-child(2){
+        padding-top: $layout-gap;
+      }
+    }
+  }
+}
+// 2カラム(メイン&左サイドバー)
+%2column-left{
+  @extend %layout-container;
+  @include min-screen($tablet-size + 1){
+    > div{
+      &:nth-child(1){
+        padding-left: $layout-gap / 2;
+        flex: 1;
+      }
+      &:nth-child(2){
+        padding-right: $layout-gap / 2;
+        flex: 0 0 $layout-leftWidth;
+        order: -1;
+      }
+    }
+  }
+  @include max-screen($tablet-size){
+    > div{
+      flex: 100%;
+      &:nth-child(2){
+        padding-top: $layout-gap;
+      }
+    }
+  }
+}
+// 3カラム(3等分)
+%3column-equal{
+  @extend %layout-container;
+  @include min-screen($pc-size + 1){
+    > div{
+      flex: 1;
+      &:nth-child(1){
+        padding-right: $layout-gap / 2;
+      }
+      &:nth-child(2){
+        padding-left: $layout-gap / 2;
+        padding-right: $layout-gap / 2;
+      }
+      &:nth-child(3){
+        padding-left: $layout-gap / 2;
+      }
+    }
+  }
+  @include max-screen($pc-size){
+    grid-template-columns: repeat(2, 1fr);
+    > div{
+      &:nth-child(1){
+        flex: 100%;
+      }
+      &:nth-child(2){
+        padding-right: $layout-gap / 2;
+        padding-top: $layout-gap;
+        flex: 1;
+      }
+      &:nth-child(3){
+        padding-left: $layout-gap / 2;
+        padding-top: $layout-gap;
+        flex: 1;
+      }
+    }
+  }
+  @include max-screen($tablet-size){
+    > div{
+      flex: 100%;
+      &:nth-child(2),
+      &:nth-child(3){
+        padding-top: $layout-gap;
+      }
+    }
+  }
+}
+// 3カラム(左右サイドバー)
+%3column-leftright{
+  @extend %layout-container;
+  @include min-screen($pc-size + 1){
+    > div{
+      &:nth-child(1){
+        padding-right: $layout-gap / 2;
+        flex: 1;
+      }
+      &:nth-child(2){
+        padding-left: $layout-gap / 2;
+        padding-right: $layout-gap / 2;
+        flex: 0 0 $layout-leftWidth;
+        order: -1;
+      }
+      &:nth-child(3){
+        padding-left: $layout-gap / 2;
+        flex: 0 0 $layout-rightWidth;
+      }
+    }
+  }
+  @include max-screen($pc-size){
+    grid-template-columns: repeat(2, 1fr);
+    > div{
+      &:nth-child(1){
+        flex: 100%;
+      }
+      &:nth-child(2){
+        padding-right: $layout-gap / 2;
+        padding-top: $layout-gap;
+        flex: 1;
+      }
+      &:nth-child(3){
+        padding-left: $layout-gap / 2;
+        padding-top: $layout-gap;
+        flex: 1;
+      }
+    }
+  }
+  @include max-screen($tablet-size){
+    > div{
+      flex: 100%;
+      &:nth-child(2),
+      &:nth-child(3){
+        padding-top: $layout-gap;
+        flex: 100%;
+      }
+    }
+  }
+}
+/* スペース */
+// トップページスペース
+%layout-topPage{
+  margin-top: $layout-top-topMargin;
+  padding-left: $body-padding; // extend.scss
+  padding-right: $body-padding; // extend.scss
+  @include max-screen($tablet-size){
+    margin-top: $layout-top-topMargin / 2;
+  }
+}
+// 下層ページスペース
+%layout-underPage{
+  margin-top: $layout-page-topMargin;
+  padding-left: $body-padding; // extend.scss
+  padding-right: $body-padding; // extend.scss
+  @include max-screen($tablet-size){
+    margin-top: $layout-page-topMargin / 2;
+  }
+}
